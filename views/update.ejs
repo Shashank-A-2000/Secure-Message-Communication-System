@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Profile Upsdate</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/userstyle.css" rel="stylesheet">
+<link href="/fonts/f1.css" rel="stylesheet">
+<link href="/fonts/f2.css" rel="stylesheet">
+<link href="/fonts/f3.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+<style>
+    .sec-foot{
+            position:absolute;
+            bottom:0px;
+            width:100%;
+    }
+.input-p{
+  padding-top:20px;
+  
+}
+.input-l{
+  padding-left:20px;
+}
+	
+.btn {
+  padding: 0 25px;
+  cursor: pointer;
+  font-size: 15px;
+  }
+.btn--green {
+  background:lightgreen;
+}
+
+.btn--green:hover {
+  background:green;
+}	
+
+
+</style>
+
+
+</head>
+
+<body>
+
+<header class="item header margin-top-0">
+<div class="wrapper">
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="/user/inbox/<%=userid%>" class="navbar-brand brand">Profile Update</a>
+		</div>
+	
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+                <li class="propClone"><a href="/user/inbox/<%=userid%>">Inbox</a></li>
+				<li class="propClone"><a href="/user/compose">Compose</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Key
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <a class="dropdown-item" href="/user/keyrequests">Key Requests</a><br>
+					  <a class="dropdown-item" href="/user/keydecrypt">Key Decryption</a>
+					</div>
+				</li>
+				  <li role="presentation"><a href="/user/logout"> <span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+
+			</ul>
+		</div>
+	</div>
+	</nav>
+</header>
+<br><br><br><br>
+
+
+<div class="container">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form id="updateform">
+				<div class="form-group row input-p input-l">
+					<label for="name" class="col-sm-1 "><h4><b>Name</b></h4></label>
+					<div class="col-sm-4">
+                        <input type="text" class="form-control" id="name" value="<%=result.fname%> <%=result.lname%>" disabled></input>
+                    </div>
+				</div>
+				
+				<div class="form-group row input-l">
+					<label for="dob" class="col-sm-1 "><h4><b>DOB<b></h4></label>
+					<div class="col-sm-4">
+                        <input type="text" class="form-control" id="dob" value="<%=result.dob%>" disabled></input>
+                    </div>
+				</div>
+				
+				<div class="form-group row input-l">
+					<label for="dob" class="col-sm-1 "><h4><b>Phone<b></h4></label>
+					<div class="col-sm-4">
+                        <input type="text" class="form-control" id="phone" value="<%=result.phone%>" disabled></input>
+                    </div>
+				</div>
+				
+				<div class="form-group row input-l">
+					<label for="mail" class="col-sm-1 "><h4><b>Email<b></h4></label>
+					<div class="col-sm-4">
+                        <input type="text"  class="form-control" id="email" value="<%=result.email_id%>" disabled></input>
+                    </div>
+				</div>
+				
+				<div class="form-group row input-l">
+					<label for="pass" class="col-sm-1 "><h4><b>New Password<b></h4></label>
+					<div class="col-sm-4">
+                        <input type="password" class="form-control" id="newpwd" name="newpwd" placeholder="New Password"></input>
+                    </div>
+				</div>
+
+                <div class="form-group row input-l">
+					<label for="pass" class="col-sm-1 "><h4><b>Confirm Password<b></h4></label>
+					<div class="col-sm-4">
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Confirm Password"></input>
+                    </div>
+				</div>
+						
+                <div class="p-t-20 input-l">
+					<button class="btn btn--radius btn--green" type="submit">Update</button>
+				</div>
+                </form>
+            </div>
+	
+        </div>
+  </div>
+<br>
+
+
+
+ 
+ </div>    
+ 
+	<div class="footer-1 text-center">
+	<div class="container">
+			<p>
+				 <h3>&copy; 2021 Secure Message Communication System<br/></h3>
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+<script src="/js/jquery-.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/anim.js"></script>	
+<script src="/js/inbox.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script>
+    $('#updateform').submit(function( event ) {
+        var data = $( this ).serializeArray();
+        const pass = data[0]['value'];
+        const cpass = data[1]['value'];
+        if(pass !== cpass)
+            alert("Password Mismatch")
+        else{
+            $.post("/user/update",{"pass":pass},(data,status)=>{
+                if(data === "Success"){
+                    alert("Profile Update Successfuly");
+                    window.location.reload();
+                }
+                else
+                    alert("Failed to Update Profile... Please Try Again");
+            });
+        }
+        event.preventDefault();
+    });
+</script>
+
+
+</html>
+<!-- end document-->

@@ -1,0 +1,190 @@
+
+/*==========NavBar================= */
+
+.navbar-lg {
+	min-height:76px;
+}
+.navbar-lg .navbar-brand {
+	line-height:1;
+	padding-top:20px;
+	padding-bottom:26px;
+	font-size:30px;
+}
+
+.navbar-toggle:before {
+	background-image:url(../images/menu.png);
+	background-repeat:no-repeat;
+}
+
+header .navbar-white a {
+	color:#3D566E;
+	font-weight:700;
+}
+
+header .navbar-white {
+	background:#fff;
+	box-shadow:0px 3px 2px 0px rgba(50,50,50,0.1);
+}
+
+.navbar-nav,.navbar>.container .navbar-brand {
+	font-family:Dosis;
+	text-transform:uppercase;
+}
+
+@media (min-width:768px) {
+	.navbar-lg .navbar-nav>li>a {
+		padding-top:26px;
+		padding-bottom:26px;
+		 font-size:18px;
+	}
+	.navbar-lg .navbar-nav>li>a:hover,.navbar-lg .navbar-nav>li>a:active {
+		background:#fff;
+		color: #00bba7;
+	}
+}
+
+/*======================Table===============*/
+table{
+		font-size:medium;
+	}
+	thead tr{
+		 background: #009688;
+		 color:white;
+	}
+.row{
+		font-size: 50px;
+	}
+
+
+/*==========================Footer==========*/
+.footer-1 {
+	background:#222;
+	color:#999;
+	font-size:14px;
+	padding:10px 0 10px 0;
+	margin-top:00px;
+}
+	
+/*===================box===#2c6ed5=======================*/
+.card {
+  overflow: hidden;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 50px;
+  background: #fff;
+  
+  
+  min-height: 200px;
+  width: 50vw;
+  margin: 10px auto;
+  background:#4CAF50;
+  border-radius: 20px;
+}
+
+
+.card-1 .card-body {
+  padding: 0 150px;
+  padding-top: 10px;
+  padding-bottom: 65px;
+}
+
+@media (max-width: 767px) {
+  .card-1 .card-body {
+    padding: 0 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+/*=======================Input==========================*/
+input{
+  outline: none;
+  margin: 0;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width: 170%;
+  font-size: 14px;
+  font-family: inherit;
+   border-radius: 10px;
+}	
+textarea{
+	 outline: none;
+  margin: 0;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width: 180%;
+  font-size: 14px;
+  font-family: inherit;
+   border-radius: 5px;
+}
+
+
+.input-group {
+  position: relative;
+  margin-bottom: 10px;
+  border-bottom: 20px;
+}
+
+
+.input--style-1 {
+  padding: 9px 0;
+  color: #222;
+}
+
+/*============================BUTTON===============*/
+
+button {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.btn {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 25px;
+  cursor: pointer;
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  color: #fff;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn--radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.btn--green {
+  background:SlateBlue;
+}
+
+.btn--green:hover {
+  background:blue;
+}
+
+
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+.p-t-100 {
+  padding-top: 100px;
+}
+
+.p-t-20 {
+  padding-top: 20px;
+}
+
+.p-b-100 {
+  padding-bottom: 100px;
+}
+
+/*==============bgcolor=========================*/

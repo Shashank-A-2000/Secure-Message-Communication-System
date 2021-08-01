@@ -1,0 +1,67 @@
+
+/*==========NavBar================= */
+
+.navbar-lg {
+	min-height:76px;
+}
+.navbar-lg .navbar-brand {
+	line-height:1;
+	padding-top:20px;
+	padding-bottom:26px;
+	font-size:30px;
+}
+
+.navbar-toggle:before {
+	background-image:url(../images/menu.png);
+	background-repeat:no-repeat;
+}
+
+header .navbar-white a {
+	color:#3D566E;
+	font-weight:700;
+}
+
+header .navbar-white {
+	background:#fff;
+	box-shadow:0px 3px 2px 0px rgba(50,50,50,0.1);
+}
+
+.navbar-nav,.navbar>.container .navbar-brand {
+	font-family:Dosis;
+	text-transform:uppercase;
+}
+
+@media (min-width:768px) {
+	.navbar-lg .navbar-nav>li>a {
+		padding-top:26px;
+		padding-bottom:26px;
+		 font-size:18px;
+	}
+	.navbar-lg .navbar-nav>li>a:hover,.navbar-lg .navbar-nav>li>a:active {
+		background:#fff;
+		color: #00bba7;
+	}
+}
+
+/*======================Table===============*/
+table{
+		font-size:medium;
+	}
+	thead tr{
+		 background: #009688;
+		 color:white;
+	}
+.row{
+		font-size: 50px;
+	}
+
+
+/*==========================Footer==========*/
+.footer-1 {
+	background:#222;
+	color:#999;
+	font-size:14px;
+	padding:10px 0 10px 0;
+	margin-top:350px;
+}
+	

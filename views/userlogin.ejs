@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/fonts/f1.css" rel="stylesheet">
+<link href="/fonts/f2.css" rel="stylesheet">
+<link href="/fonts/f3.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<header class="item header margin-top-0">
+<div class="wrapper">
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="/" class="navbar-brand brand">SMCS</a>
+		</div>
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="propClone"><a href="/">Home</a></li>
+				<!--<li class="propClone"><a href="about.html">About</a></li>-->
+				<li class="propClone"><a href="/user/signup">Sign-Up</a></li>
+				<li class="propClone"><a href="/admin/signin">Admin-Sign-In</a></li>
+				<li class="propClone"><a href="/user/signin">User-Sign-In</a></li>
+				<li class="propClone"><a href="/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="text-pageheader">
+					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.0s">
+						 Sign-In
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</header>
+
+<section class="item content">
+<div class="container toparea">
+	  <%if(msg != ""){%>
+		<div class="alert alert-danger" role="alert">
+			<%=msg%>
+		  </div>
+	  <%}%>
+	<div class="underlined-title">
+		<div class="editContent">
+			<h1 class="text-center latestitems">User Sign-In</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+                        <form action="/user/signin" method="post" class="form">
+
+                            <div class="form-group">
+                                <input class="text" type="email" name="userid" id="Lconid" placeholder="User-Id" title="Valid Email Address" required=""><br>
+                            </div>
+                            <div class="form-group">
+                                <input class="text" type="password" name="password" id="Lcpass" pattern=".{6,}" title="Six or more characters" required maxlength=20 placeholder="Password" required=""><br>
+                            </div>
+							<p><a class="link-primary" data-toggle="modal" href="#exampleModalCenter" style="text-decoration:none; float:right;">
+									Forgot password?
+								</a>
+							</p>
+                            <input type="submit" class="btn" value="Sign In"></input>
+                            <p class="text-danger" id='clmsg'></p>
+							
+                        </form>
+		</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Forgot Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="return clr();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <div class="form-group">
+        <form id="forgot">
+		<h3>Enter your Mail-ID to receive a new Password</h3>
+			<input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email ID" />	
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closebutton" class="btn btn-secondary" data-dismiss="modal" onclick="return clr();">Close</button>
+        <button type="button" class="btn btn-primary" onclick="return fgt();">Send</button>
+      </div>
+	  </form>
+	  </div>
+    </div>
+  </div>
+</div>
+	</div>
+</div>
+</div>
+</section>
+
+<div class="footer text-center">
+	<div class="container">
+		<div class="row-2">
+			<p>
+				 <h3>&copy; 2021 Secure Message Comunication System<br/></h3>
+			</p>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/anim.js"></script>
+<script src="/js/validate.js"></script>
+<script>
+	function fgt(){
+		const email = document.getElementById("email").value;
+		$.post("/user/forgotpassword",{"email":email}, (data, status)=>{
+			if(data === "Invalid"){
+				alert("Invalid Email Id");
+			}
+			else if(data === "Success"){
+				alert("Password Sent to "+email);
+				document.getElementById("closebutton").click();
+			}
+			else{
+				alert("Failed to Send a Mail");
+			}
+		});
+	}
+	
+	function clr(){
+		document.getElementById("email").value="";
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Compose Mail</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/userstyle.css" rel="stylesheet">
+<link href="/fonts/f1.css" rel="stylesheet">
+<link href="/fonts/f2.css" rel="stylesheet">
+<link href="/fonts/f3.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+<style>
+    .sec-foot{
+            position:absolute;
+            bottom:0px;
+            width:100%;
+    }
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+<header class="item header margin-top-0">
+
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="/user/inbox/<%=userid%>" class="navbar-brand brand">Compose Mail</a>
+		</div>
+	
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+                <li class="propClone"><a href="/user/inbox/<%=userid%>">Inbox</a></li>
+				<li class="propClone"><a href="/user/update">Profile</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Key
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <a class="dropdown-item" href="/user/keyrequests">Key Requests</a><br>
+					  <a class="dropdown-item" href="/user/keydecrypt">Key Decryption</a>
+					</div>
+				</li>
+				  <li role="presentation"><a href="/user/logout"> <span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+
+			</ul>
+		</div>
+	</div>
+	</nav>
+</header>
+
+
+    <div class="page-wrapper bg-color p-t-100 p-b-100 font-robo">
+            <div class="card card-1">
+                <div class="card-body">
+                    <form id="encform">
+                        <div class="input-group">
+							<h3><b>Recipient<b></h3>
+                            <input class="input--style-1" type="email" id="Recipient" name="Recipient" size="30" placeholder="Recipient E-Mail ID" required autocomplete="off"></input></label><br>
+                        </div>
+						
+						<div class="input-group">
+							<h3><b>Title<b></h3>
+                            <input type="text" class="input--style-1" name="title" id="title" size="30" placeholder="Title" required autocomplete="off"></input><br>
+
+                        </div>
+						
+						<div class="input-group">
+							<h3><b>Content<b></h3>
+                            <textarea class="input--style-1" placeholder="Content" id="plain" name="plain" rows="8" cols="30" required></textarea><br></label>
+                        </div>
+						
+						<div class="input-group">
+							<h3><b>Key<b></h3>
+                            <input class="input--style-1" type="password" id="key" name="key" placeholder="Key" size="30" autocomplete="off" required></input>    
+                        </div>
+
+                        
+						<div class="p-t-20">
+                            <button class="btn btn--radius btn--green" type="submit">Send</button>
+                        </div>
+                        <input type="hidden" name="userid" value="<%=userid%>"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+   
+ </div>    
+	
+	<div class="footer-1 text-center">
+	<div class="container">
+			<p>
+				 <h3>&copy; 2021 Secure Message Communication System<br/></h3>
+			</p>
+		</div>
+	</div>
+</div>
+<script src="/js/jquery-.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/anim.js"></script>	
+<script src="/js/inbox.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script>
+    $('#encform').submit(function( event ) {
+    var data = $( this ).serializeArray();
+	const recipient = data[0]['value'];
+	const title = data[1]['value'];
+	const Plaintext = data[2]['value'];
+    const key = data[3]['value'];
+	const userid = data[4]['value'];
+    var encrypted = CryptoJS.AES.encrypt(Plaintext, key);
+    var enc = encrypted.toString();
+    $.post("/user/compose",{"cipher":enc,"recipient":recipient,"title":title}, (data, status) => {
+        if(data ==="Invalid")
+			alert("Invalid Sender ID");
+		else if(data === "Success"){
+			alert("Message Sent Successfully");
+			window.location.replace("/user/inbox/"+userid);
+		}else
+			alert("Failed to Send Message");  
+    });
+    event.preventDefault();
+});
+</script>
+</body>
+</html>
+<!-- end document-->
